@@ -61,13 +61,61 @@ vector <vector<string>> string_parse(string tiny) {
         }
         else if (tiny[i] == ':' && tiny[i + 1] == '=') {
             scanned[0].push_back(":=");
-            scanned[1].push_back("assign");
+            scanned[1].push_back("ASSIGN");
             i++;
         }
-        else if(tiny[i] == '+' || tiny[i] == '-' || tiny[i] == '/' || tiny[i] == '*' || tiny[i] == '=' || tiny[i] == '<' || tiny[i] == '(' || tiny[i] == ')' || tiny[i] == ';') {
+        else if (tiny[i] == '+') {
             scannedChar += tiny[i];
             scanned[0].push_back(scannedChar);
-            scanned[1].push_back("Symbol");
+            scanned[1].push_back("PLUS");
+            scannedChar = "";
+        }
+        else if (tiny[i] == '-') {
+            scannedChar += tiny[i];
+            scanned[0].push_back(scannedChar);
+            scanned[1].push_back("MINUS");
+            scannedChar = "";
+        }
+        else if (tiny[i] == '/') {
+            scannedChar += tiny[i];
+            scanned[0].push_back(scannedChar);
+            scanned[1].push_back("DIVIDE");
+            scannedChar = "";
+        }
+        else if (tiny[i] == '*') {
+            scannedChar += tiny[i];
+            scanned[0].push_back(scannedChar);
+            scanned[1].push_back("MULTIPLY");
+            scannedChar = "";
+        }
+        else if (tiny[i] == '=') {
+            scannedChar += tiny[i];
+            scanned[0].push_back(scannedChar);
+            scanned[1].push_back("RELATION");
+            scannedChar = "";
+        }
+        else if (tiny[i] == '<') {
+            scannedChar += tiny[i];
+            scanned[0].push_back(scannedChar);
+            scanned[1].push_back("RELATION");
+            scannedChar = "";
+        }
+        else if (tiny[i] == '(') {
+            scannedChar += tiny[i];
+            scanned[0].push_back(scannedChar);
+            scanned[1].push_back("(");
+            scannedChar = "";
+        }
+        else if (tiny[i] == ')') {
+            scannedChar += tiny[i];
+            scanned[0].push_back(scannedChar);
+            scanned[1].push_back(")");
+            scannedChar = "";
+        }
+        else if (tiny[i] == ';') {
+            scannedChar += tiny[i];
+            scanned[0].push_back(scannedChar);
+            scanned[1].push_back("SEMI");
             scannedChar = "";
         }
     }
